@@ -1,19 +1,21 @@
-# React-Native-Template
+# Mobile-Flash-Cards
 
-This template will be used to start developing the new React app in iOS and Android
-This  has 
- - Tab navigation
- - Stack Navigation 
- - In Android it will be tap navigation in iOS it will be a botton navigation 
+## Project Overview
+    A mobile application (Android & iOS) that allows users to study collections of flashcards. 
+    The app will allow users to create different categories of flashcards called "decks", add flashcards to those decks,           then take quizzes on those decks.
 
+### Given scenarios
+- Allow users to create a deck which can hold an unlimited number of cards.
+- Allow users to add a card to a specific deck.
+- The front of the card should display the question.
+- The back of the card should display the answer.
+- Users should be able to quiz themselves on a specific deck and receive a score once they're done.
+- Users should receive a notification to remind themselves to study if they haven't already for that day.
 
 ## Installation
-
-use this template while creating a new react native project
-
-And do
-
-`npm install`
+    Clone the repository,and use NPM to install the project dependencies.
+    
+    `npm install`
 
 ## To start the application
 
