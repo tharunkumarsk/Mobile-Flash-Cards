@@ -7,7 +7,7 @@ import {
 } from "react-navigation-tabs";
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
-import LinksScreen from "../screens/LinksScreen";
+import LinksScreen from "../screens/AddDeckScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 
 const config = Platform.select({
@@ -46,11 +46,11 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-  tabBarLabel: "Questions",
+  tabBarLabel: "Add Deck",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-list" : "md-list"}
+      name={Platform.OS === "ios" ? "ios-add-circle" : "md-add-circle"}
     />
   )
 };

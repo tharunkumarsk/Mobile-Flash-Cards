@@ -18,7 +18,7 @@ export default function LinksScreen() {
 }
 if (Platform.OS === "ios") {
   LinksScreen.navigationOptions = {
-    title: "Link"
+    title: "Add a deck"
   };
 }
 

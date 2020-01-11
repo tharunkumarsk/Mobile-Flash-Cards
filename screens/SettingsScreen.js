@@ -18,7 +18,7 @@ export default function SettingsScreen() {
 
 if (Platform.OS === "ios") {
   SettingsScreen.navigationOptions = {
-    title: "Link"
+    title: "Settings"
   };
 }
 
