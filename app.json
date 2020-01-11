@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "React-Native-Template",
-    "slug": "React-Native-Template",
+    "name": "Mobile-Flash-Cards",
+    "slug": "Mobile-Flash-Cards",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
