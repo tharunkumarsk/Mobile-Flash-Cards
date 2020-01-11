@@ -13,6 +13,7 @@
 - Users should receive a notification to remind themselves to study if they haven't already for that day.
 
 ## Installation
+    The projerct is created from a template project of my own (React-Native-Template)
     Clone the repository,and use NPM to install the project dependencies.
     
     `npm install`
