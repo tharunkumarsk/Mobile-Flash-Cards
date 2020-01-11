@@ -1,5 +1,7 @@
 import React from "react";
-import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Platform, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import {MonoText} from "../components/StyledText"
+import {decks} from "../utils/stub"
 
 export default function HomeScreen() {
   return (
@@ -8,12 +10,20 @@ export default function HomeScreen() {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
-        <View style={styles.welcomeContainer}></View>
+        <View style={styles.deckContainer}>
+        {Object.values(decks).map(deck => {
+          return (
+            <TouchableOpacity
+              key={deck.title}
+        
+            >
+        <MonoText>{deck.title}</MonoText>
+            </TouchableOpacity>
+          );
+        })}
+        </View>
       </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>You are home page of the app!</Text>
-      </View>
+      
     </View>
   );
 }
@@ -31,9 +41,9 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingTop: 30
   },
-  welcomeContainer: {
+  deckContainer: {
     alignItems: "center",
-    marginTop: 10,
+    marginTop: 50,
     marginBottom: 20
   },
 
