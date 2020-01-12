@@ -1,10 +1,23 @@
-import React from "react";
+import React,{Component} from "react";
 import { Platform, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
-import {decks} from "../utils/stub"
 import Deck from '../components/Deck'
+import { connect } from 'react-redux';
+import { handlAppLoadData } from '../actions/index';
+import PropTypes from 'prop-types';
 
-export default function HomeScreen() {
-  return (
+
+class HomeScreen extends Component {
+
+  static propTypes = {
+    handlAppLoadData: PropTypes.func.isRequired,
+    decks: PropTypes.object.isRequired
+  };
+  componentDidMount() {
+    this.props.handlAppLoadData();
+  }
+  render() {
+    const { decks } = this.props;
+    return (
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
@@ -24,8 +37,8 @@ export default function HomeScreen() {
           );
         })}
       </ScrollView>
-      
-  );
+    )
+  }
 }
 
 HomeScreen.navigationOptions = {
@@ -78,3 +91,11 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
+
+
+const mapStateToProps = state => ({ decks: state });
+
+export default connect(
+  mapStateToProps,
+  { handlAppLoadData }
+)(HomeScreen);

@@ -4,8 +4,18 @@ import * as Font from "expo-font";
 import React, { useState } from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
 import AppNavigator from "./navigation/AppNavigator";
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import { Provider } from 'react-redux';
+import reducer from './reducers/index';
+
+const store = createStore(
+  reducer ,
+  applyMiddleware(thunk, logger)
+);
+
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -20,10 +30,12 @@ export default function App(props) {
     );
   } else {
     return (
+      <Provider store={store}>
       <View style={styles.container}>
         {Platform.OS === "ios" && <StatusBar barStyle="default" />}
         <AppNavigator />
       </View>
+      </Provider>
     );
   }
 }
