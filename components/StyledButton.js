@@ -6,15 +6,15 @@ import Colors from '../constants/Colors';
 export default function StyledButton({
   children,
   onPress,
-  BtnStyle = "btnPrimary",
+  BtnStyle = "",
+  disabled = true
 }) {
   const BtnStyles = styles[BtnStyle];
   return (
     <View style={styles.btnContainer}>
     <TouchableOpacity
-      style={[BtnStyles ,Platform.OS === "ios" ? styles.iosSubmitBtn : styles.AndroidSubmitBtn]
-       
-      }
+      style={[BtnStyles ,Platform.OS === "ios" ? styles.iosSubmitBtn : styles.AndroidSubmitBtn]}
+      disabled={disabled}
       onPress={onPress}
     >
       <Text style={styles.submitBtnText}>{children}</Text>
@@ -66,5 +66,6 @@ const styles = StyleSheet.create({
 StyledButton.propTypes = {
   children: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
-  BtnStyle: PropTypes.string.isRequired
+  BtnStyle: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired
 };

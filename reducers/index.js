@@ -1,5 +1,6 @@
 import {
     RECEIVED_DECKS,
+    ADD_DECK
   } from '../actions/index';
 
   
@@ -10,7 +11,16 @@ import {
           ...state,
           ...action.decks
         };
-      default:
-        return state;
-    }
+        case ADD_DECK:
+          const { title } = action;
+          return {
+            ...state,
+            [title]: {
+              title,
+              questions: []
+            }
+          };
+        default:
+          return state;
+      }
   }

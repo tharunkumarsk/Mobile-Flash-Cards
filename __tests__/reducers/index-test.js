@@ -34,5 +34,14 @@ describe('the app redecer', () => {
               answer: 'some y'
             }]}});
     });
+  it('ADD_DECK', () => {
+      expect(appReducer(initialState, {
+        type: 'ADD_DECK',
+        title: 'new deck'
+      })).toEqual({
+        "new deck": {
+          title: 'new deck',
+          questions: []}});
+    });
   
 });

@@ -1,23 +1,61 @@
-import React from "react";
-import { View, StyleSheet, Platform } from "react-native";
-import { MonoText } from "../components/StyledText";
+import React,{Component} from "react";
+import { View, StyleSheet, Platform,TextInput,Text} from "react-native";
+import  StyledButton  from "../components/StyledButton";
+import  {StyledInputView}  from "../components/StyledInputView";
+import { addDeck } from '../actions/index';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default function LinksScreen() {
+
+
+class AddDeckScreen extends Component {
+  static propTypes = {
+    addDeck: PropTypes.func.isRequired
+  };
+  state = {
+    text: '',
+    initialBtnType:'btnDisabled'
+  };
+  handleChange = text => {
+      this.setState({ text});
+    
+    
+  };
+  handleSubmit = () => {
+    const { addDeck } = this.props;
+    const { text } = this.state
+    if(text)
+    addDeck(text).then;
+    this.setState(() => ({ text: '' }));
+  };
+  render() {
   return (
-    <View style={styles.tabBarInfoContainer}>
-      <MonoText>You are links page of the app!</MonoText>
+    <View style={styles.container}>
+    <View style={{ height: 60 }} />
+    <View style={styles.block}>
+      <Text style={styles.title}>Enter the title of your new Deck</Text>
     </View>
-    // <ScrollView style={styles.container}>
-    //   {/**
-    //    * Go ahead and delete ExpoLinksView and replace it with your content;
-    //    * we just wanted to provide you with some helpful links.
-    //    */}
-
-    // </ScrollView>
+     <View style={[styles.block]}>
+     <StyledInputView
+      text= {this.state.text}
+      handleChange ={this.handleChange}
+      handleSubmit ={this.handleSubmit}
+      />
+    </View>
+    <StyledButton
+    disabled = {this.state.text === ''}
+    BtnStyle={this.state.text ? "btnPrimary" :"btnDisabled"}
+    onPress={this.handleSubmit}
+    >
+      Create Deck
+    </StyledButton>
+    </View>
+   
   );
 }
+}
 if (Platform.OS === "ios") {
-  LinksScreen.navigationOptions = {
+  AddDeckScreen.navigationOptions = {
     title: "Add a deck"
   };
 }
@@ -28,24 +66,17 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     backgroundColor: "#fff"
   },
-  tabBarInfoContainer: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20
+  block: {
+    marginBottom: 20
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 32
   }
+  
 });
+
+export default connect(
+  null,
+  { addDeck }
+)(AddDeckScreen);
