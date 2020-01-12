@@ -68,7 +68,7 @@ exports[`renders correctly for odd numbers of cards 1`] = `
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#757575",
+      "backgroundColor": "#00965e",
       "borderRadius": 10,
       "flex": 1,
       "justifyContent": "center",

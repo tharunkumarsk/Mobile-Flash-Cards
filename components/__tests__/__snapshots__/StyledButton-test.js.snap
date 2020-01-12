@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly the disabled button 1`] = `
+<View
+  style={
+    Object {
+      "paddingBottom": 15,
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#757575",
+        "borderColor": "#757575",
+        "borderRadius": 7,
+        "color": "#757575",
+        "height": 45,
+        "marginLeft": 40,
+        "marginRight": 40,
+        "opacity": 1,
+        "padding": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 22,
+          "textAlign": "center",
+        }
+      }
+    >
+      Snapshot test!
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders correctly the primary button 1`] = `
+<View
+  style={
+    Object {
+      "paddingBottom": 15,
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00965e",
+        "borderRadius": 7,
+        "height": 45,
+        "marginLeft": 40,
+        "marginRight": 40,
+        "opacity": 1,
+        "padding": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 22,
+          "textAlign": "center",
+        }
+      }
+    >
+      Snapshot test!
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders correctly the secondary button 1`] = `
+<View
+  style={
+    Object {
+      "paddingBottom": 15,
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#b71845",
+        "borderRadius": 7,
+        "height": 45,
+        "marginLeft": 40,
+        "marginRight": 40,
+        "opacity": 1,
+        "padding": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 22,
+          "textAlign": "center",
+        }
+      }
+    >
+      Snapshot test!
+    </Text>
+  </View>
+</View>
+`;
