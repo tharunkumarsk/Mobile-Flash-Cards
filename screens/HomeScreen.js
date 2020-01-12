@@ -1,30 +1,30 @@
 import React from "react";
 import { Platform, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
-import {MonoText} from "../components/StyledText"
 import {decks} from "../utils/stub"
+import Deck from '../components/Deck'
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
-        <View style={styles.deckContainer}>
-        {Object.values(decks).map(deck => {
+        {Object.values(decks).map((deck,index) => {
           return (
-            <TouchableOpacity
+            <TouchableOpacity style={styles.cardBtn}
               key={deck.title}
         
             >
-        <MonoText>{deck.title}</MonoText>
+        <Deck
+        title = {deck.title}
+        cardsCount = {deck.questions.length}
+        cardId = {index+1}
+        ></Deck>
             </TouchableOpacity>
           );
         })}
-        </View>
       </ScrollView>
       
-    </View>
   );
 }
 
@@ -35,16 +35,20 @@ HomeScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    margin:20
   },
 
   contentContainer: {
-    paddingTop: 30
+    paddingTop: 30,
   },
-  deckContainer: {
-    alignItems: "center",
-    marginTop: 50,
-    marginBottom: 20
+ 
+  cardBtn: {
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    flex: 1,
+    margin: 10,
+
   },
 
   //Nicely used the platfom.select in styling
