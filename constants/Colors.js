@@ -16,6 +16,7 @@ export default {
   white: "#fff",
   red: "#b71845",
   orange: "#f26f28",
+  green: "#00965e",
   blue: "#4e4cb8",
   lightPurp: "#7c53c3",
   pink: "#b93fb3"
