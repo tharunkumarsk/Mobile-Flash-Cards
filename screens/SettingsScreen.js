@@ -4,6 +4,8 @@ import { handleResetAppData } from "../actions/index";
 import StyledButton from "../components/StyledButton";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { StyledInformationView } from "../components/StyledInformationView";
+import Colors from "../constants/Colors";
 
 class SettingsScreen extends Component {
   static propTypes = {
@@ -19,11 +21,14 @@ class SettingsScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.block}>
-          <Text style={styles.title}>
-            This will clear all your app data !!!
-          </Text>
-        </View>
+        <StyledInformationView
+          iconIos="ios-trash"
+          iconAndroid="md-trash"
+          iconColor={Colors.red}
+          textColor={Colors.errorBackground}
+        >
+          This will clear all your app data !!!
+        </StyledInformationView>
         <StyledButton
           disabled={false}
           BtnStyle="btnSecondary"
@@ -45,7 +50,6 @@ if (Platform.OS === "ios") {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 200,
     backgroundColor: "#fff"
   },
   block: {

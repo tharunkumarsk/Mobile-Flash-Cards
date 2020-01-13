@@ -4,14 +4,15 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  View,
-  Text
+  View
 } from "react-native";
 import Deck from "../components/Deck";
 import { connect } from "react-redux";
 import { handlAppLoadData } from "../actions/index";
 import StyledButton from "../components/StyledButton";
 import PropTypes from "prop-types";
+import { StyledInformationView } from "../components/StyledInformationView";
+import Colors from "../constants/Colors";
 
 class HomeScreen extends Component {
   static propTypes = {
@@ -29,20 +30,23 @@ class HomeScreen extends Component {
   render() {
     const { decks } = this.props;
     const decksArray = Object.values(decks);
-    if (decksArray.length === 0) {
+    if (decksArray.length === 2) {
       return (
         <View style={styles.containerNoDecks}>
-          <View style={styles.block}>
-            <Text style={styles.title}>
-              You have not yet added any decks !!!
-            </Text>
-          </View>
+          <StyledInformationView
+            iconIos="ios-information-circle"
+            iconAndroid="md-information-circle"
+            iconColor="orange"
+            textColor={Colors.green}
+          >
+            You have not yet added any decks !!!
+          </StyledInformationView>
           <StyledButton
             disabled={false}
             BtnStyle="btnPrimary"
             onPress={this.addNewDeck}
           >
-            Add a new Deck
+            Start Adding
           </StyledButton>
         </View>
       );
@@ -118,16 +122,7 @@ const styles = StyleSheet.create({
   },
   containerNoDecks: {
     flex: 1,
-    paddingTop: 200,
     backgroundColor: "#fff"
-  },
-  block: {
-    marginBottom: 20
-  },
-  title: {
-    textAlign: "center",
-    fontSize: 25,
-    color: "green"
   }
 });
 
