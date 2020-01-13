@@ -1,19 +1,39 @@
-import React from "react";
-import { ExpoConfigView } from "@expo/samples";
+import React, { Component } from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { MonoText } from "../components/StyledText";
+import { handleResetAppData } from "../actions/index";
+import StyledButton from "../components/StyledButton";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-export default function SettingsScreen() {
-  return (
-    <View style={styles.tabBarInfoContainer}>
-      <MonoText>You are settings page of the app!</MonoText>
-    </View>
-  );
-  /**
-   * Go ahead and delete ExpoConfigView and replace it with your content;
-   * we just wanted to give you a quick view of your config.
-   */
-  //return <ExpoConfigView />;
+class SettingsScreen extends Component {
+  static propTypes = {
+    handleResetAppData: PropTypes.func.isRequired
+  };
+
+  handleSubmit = () => {
+    const { handleResetAppData } = this.props;
+
+    handleResetAppData();
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.block}>
+          <Text style={styles.title}>
+            This will clear all your app data !!!
+          </Text>
+        </View>
+        <StyledButton
+          disabled={false}
+          BtnStyle="btnSecondary"
+          onPress={this.handleSubmit}
+        >
+          Reset Decks
+        </StyledButton>
+      </View>
+    );
+  }
 }
 
 if (Platform.OS === "ios") {
@@ -25,27 +45,16 @@ if (Platform.OS === "ios") {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    paddingTop: 200,
     backgroundColor: "#fff"
   },
-  tabBarInfoContainer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20
+  block: {
+    marginBottom: 20
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 25,
+    color: "red"
   }
 });
+export default connect(null, { handleResetAppData })(SettingsScreen);

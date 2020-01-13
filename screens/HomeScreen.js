@@ -1,13 +1,16 @@
-import React,{Component} from "react";
-import { Platform, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
-import Deck from '../components/Deck'
-import { connect } from 'react-redux';
-import { handlAppLoadData } from '../actions/index';
-import PropTypes from 'prop-types';
-
+import React, { Component } from "react";
+import {
+  Platform,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
+import Deck from "../components/Deck";
+import { connect } from "react-redux";
+import { handlAppLoadData } from "../actions/index";
+import PropTypes from "prop-types";
 
 class HomeScreen extends Component {
-
   static propTypes = {
     handlAppLoadData: PropTypes.func.isRequired,
     decks: PropTypes.object.isRequired
@@ -22,22 +25,19 @@ class HomeScreen extends Component {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
-        {Object.values(decks).map((deck,index) => {
+        {Object.values(decks).map((deck, index) => {
           return (
-            <TouchableOpacity style={styles.cardBtn}
-              key={deck.title}
-        
-            >
-        <Deck
-        title = {deck.title}
-        cardsCount = {deck.questions.length}
-        cardId = {index+1}
-        ></Deck>
+            <TouchableOpacity style={styles.cardBtn} key={deck.title}>
+              <Deck
+                title={deck.title}
+                cardsCount={deck.questions.length}
+                cardId={index + 1}
+              ></Deck>
             </TouchableOpacity>
           );
         })}
       </ScrollView>
-    )
+    );
   }
 }
 
@@ -49,19 +49,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    margin:20
+    margin: 20
   },
 
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 30
   },
- 
+
   cardBtn: {
     flexDirection: "column",
     justifyContent: "flex-end",
     flex: 1,
-    margin: 10,
-
+    margin: 10
   },
 
   //Nicely used the platfom.select in styling
@@ -92,10 +91,6 @@ const styles = StyleSheet.create({
   }
 });
 
-
 const mapStateToProps = state => ({ decks: state });
 
-export default connect(
-  mapStateToProps,
-  { handlAppLoadData }
-)(HomeScreen);
+export default connect(mapStateToProps, { handlAppLoadData })(HomeScreen);

@@ -1,7 +1,7 @@
-import { AsyncStorage } from 'react-native';
-import { decks } from './stub';
+import { AsyncStorage } from "react-native";
+import { decks } from "./stub";
 
-const DECKS_STORAGE_KEY = 'MobileFlashcards:decks';
+const DECKS_STORAGE_KEY = "MobileFlashcards:decks";
 
 export async function getAllDecks() {
   try {
@@ -43,7 +43,6 @@ export async function saveDeckTitle(title) {
   }
 }
 
-
 export async function addCardToDeck(title, card) {
   try {
     const deck = await getDeck(title);
@@ -72,6 +71,14 @@ export async function saveDeckTitleAS(title) {
         }
       })
     );
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function resetDecks() {
+  try {
+    await AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks));
   } catch (err) {
     console.log(err);
   }
