@@ -9,6 +9,7 @@ import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import AddDeckScreen from "../screens/AddDeckScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import DeckDetailsScreen from "../screens/DeckDetailsScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -71,6 +72,7 @@ SettingsStack.navigationOptions = {
 };
 
 SettingsStack.path = "";
+
 //Nice to return a navigation type by a condition
 const _TabNavigator =
   Platform.OS === "ios"
@@ -84,5 +86,17 @@ const tabNavigator = _TabNavigator({
 });
 
 tabNavigator.path = "";
+tabNavigator.navigationOptions = {
+  header: null
+};
 
-export default tabNavigator;
+const MainNavigator = createStackNavigator({
+  Home: {
+    screen: tabNavigator
+  },
+  DeckDetailsScreen: {
+    screen: DeckDetailsScreen
+  }
+});
+
+export default MainNavigator;

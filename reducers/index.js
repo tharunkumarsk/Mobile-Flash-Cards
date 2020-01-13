@@ -1,7 +1,7 @@
 import { RECEIVED_DECKS, ADD_DECK, RESET_DECKS } from "../actions/index";
 import { decks as StubData } from "../utils/stub";
 
-export default function decks(state = {}, action) {
+export default function decks(state = StubData, action) {
   switch (action.type) {
     case RECEIVED_DECKS:
       return {

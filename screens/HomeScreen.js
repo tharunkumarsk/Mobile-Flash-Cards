@@ -28,9 +28,9 @@ class HomeScreen extends Component {
   };
 
   render() {
-    const { decks } = this.props;
+    const { decks, navigation } = this.props;
     const decksArray = Object.values(decks);
-    if (decksArray.length === 2) {
+    if (decksArray.length === 0) {
       return (
         <View style={styles.containerNoDecks}>
           <StyledInformationView
@@ -58,7 +58,13 @@ class HomeScreen extends Component {
       >
         {decksArray.map((deck, index) => {
           return (
-            <TouchableOpacity style={styles.cardBtn} key={deck.title}>
+            <TouchableOpacity
+              style={styles.cardBtn}
+              key={deck.title}
+              onPress={() =>
+                navigation.navigate("DeckDetailsScreen", { title: deck.title })
+              }
+            >
               <Deck
                 title={deck.title}
                 cardsCount={deck.questions.length}
