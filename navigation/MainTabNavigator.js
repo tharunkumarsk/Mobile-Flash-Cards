@@ -34,14 +34,14 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = "";
 
-const LinksStack = createStackNavigator(
+const AddDeckStack = createStackNavigator(
   {
     Links: AddDeckScreen
   },
   config
 );
 
-LinksStack.navigationOptions = {
+AddDeckStack.navigationOptions = {
   tabBarLabel: "Add Deck",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -51,7 +51,7 @@ LinksStack.navigationOptions = {
   )
 };
 
-LinksStack.path = "";
+AddDeckStack.path = "";
 
 const SettingsStack = createStackNavigator(
   {
@@ -79,7 +79,7 @@ const _TabNavigator =
 
 const tabNavigator = _TabNavigator({
   HomeStack,
-  LinksStack,
+  AddDeckStack,
   SettingsStack
 });
 

@@ -22,7 +22,9 @@ class HomeScreen extends Component {
     this.props.handlAppLoadData();
   }
 
-  addNewDeck = () => {};
+  addNewDeck = () => {
+    this.props.navigation.navigate("AddDeckStack");
+  };
 
   render() {
     const { decks } = this.props;
