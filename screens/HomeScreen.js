@@ -3,11 +3,14 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  View,
+  Text
 } from "react-native";
 import Deck from "../components/Deck";
 import { connect } from "react-redux";
 import { handlAppLoadData } from "../actions/index";
+import StyledButton from "../components/StyledButton";
 import PropTypes from "prop-types";
 
 class HomeScreen extends Component {
@@ -18,14 +21,36 @@ class HomeScreen extends Component {
   componentDidMount() {
     this.props.handlAppLoadData();
   }
+
+  addNewDeck = () => {};
+
   render() {
     const { decks } = this.props;
+    const decksArray = Object.values(decks);
+    if (decksArray.length === 0) {
+      return (
+        <View style={styles.containerNoDecks}>
+          <View style={styles.block}>
+            <Text style={styles.title}>
+              You have not yet added any decks !!!
+            </Text>
+          </View>
+          <StyledButton
+            disabled={false}
+            BtnStyle="btnPrimary"
+            onPress={this.addNewDeck}
+          >
+            Add a new Deck
+          </StyledButton>
+        </View>
+      );
+    }
     return (
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
-        {Object.values(decks).map((deck, index) => {
+        {decksArray.map((deck, index) => {
           return (
             <TouchableOpacity style={styles.cardBtn} key={deck.title}>
               <Deck
@@ -88,6 +113,19 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: "rgba(96,100,109, 1)",
     textAlign: "center"
+  },
+  containerNoDecks: {
+    flex: 1,
+    paddingTop: 200,
+    backgroundColor: "#fff"
+  },
+  block: {
+    marginBottom: 20
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 25,
+    color: "green"
   }
 });
 
