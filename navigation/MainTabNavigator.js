@@ -7,7 +7,7 @@ import {
 } from "react-navigation-tabs";
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
-import LinksScreen from "../screens/AddDeckScreen";
+import AddDeckScreen from "../screens/AddDeckScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 
 const config = Platform.select({
@@ -27,11 +27,7 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === "ios"
-          ? "ios-folder-open"
-          : "md-folder-open"
-      }
+      name={Platform.OS === "ios" ? "ios-folder-open" : "md-folder-open"}
     />
   )
 };
@@ -40,7 +36,7 @@ HomeStack.path = "";
 
 const LinksStack = createStackNavigator(
   {
-    Links: LinksScreen
+    Links: AddDeckScreen
   },
   config
 );
