@@ -4,18 +4,20 @@ import Deck from "../components/Deck";
 import { connect } from "react-redux";
 import StyledButton from "../components/StyledButton";
 import PropTypes from "prop-types";
+import { deleteDeckWith } from "../actions/index";
 
 class DeckDetailsScreen extends Component {
   static propTypes = {
-    deck: PropTypes.object.isRequired
+    deck: PropTypes.object.isRequired,
+    deleteDeckWith: PropTypes.func.isRequired
   };
 
   addCards = () => {
     //this.props.navigation.navigate("AddCard");
   };
 
-  deleteDeck = () => {
-    //this.props.navigation.navigate("AddDeckStack");
+  deleteDeck = id => {
+    this.props.deleteDeckWith(id);
   };
   render() {
     const { deck } = this.props;
@@ -48,7 +50,7 @@ class DeckDetailsScreen extends Component {
           <StyledButton
             disabled={false}
             BtnStyle="btnSecondary"
-            onPress={this.deleteDeck}
+            onPress={() => this.deleteDeck(deck.title)}
           >
             Delete Deck
           </StyledButton>
@@ -86,4 +88,4 @@ const mapStateToProps = (state, { navigation }) => {
   };
 };
 
-export default connect(mapStateToProps)(DeckDetailsScreen);
+export default connect(mapStateToProps, { deleteDeckWith })(DeckDetailsScreen);
