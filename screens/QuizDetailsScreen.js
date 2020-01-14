@@ -8,67 +8,60 @@ import { Divider } from "react-native-elements";
 
 class QuizDetailsScreen extends Component {
   state = {
-    showing: "question0"
+    currentQuestion:0
   };
 
   static propTypes = {
     deck: PropTypes.object
   };
 
-  deleteDeck = id => {
-    this.props.deleteDeckWith(id);
-    this.props.navigation.goBack();
+  handleCorrectAnswers = () => {
+    this.setState(prevState => ({ 
+      currentQuestion: prevState.currentQuestion + 1,
+     }));
+  };
+  handleInCorrectAnswers = () => {
+    this.setState(prevState => ({ 
+      currentQuestion: prevState.currentQuestion + 1,
+     }));
+
   };
   handleFlip = showing => {
-    this.setState({ showing });
   };
   render() {
     const { questions } = this.props.deck;
+    const{currentQuestion} = this.state
+    const question = questions[currentQuestion]
     const totalQuestions = questions.length;
     return (
       <ScrollView>
-        {questions.map((question, idx) => (
           <View style={styles.cardContainer}>
             <FlipCard
               question={question.question}
               answer={question.answer}
               totalQuestions={totalQuestions}
-              questionNbr={idx + 1}
-              onPress={this.handleFlip}
+              questionNbr={currentQuestion + 1}
             ></FlipCard>
-
-            <View style={{ paddingBottom: 10 }}></View>
-            {this.state.showing === `answer${idx}` && (
-              <View>
+          </View>
+              <View style={{ flex: 1,
+                justifyContent: 'flex-end',
+                 }}>
                 <StyledButton
                   disabled={false}
                   BtnStyle="btnPrimary"
-                  onPress={() =>
-                    this.props.navigation.navigate("QuizDetailsScreen", {
-                      title: deck.title
-                    })
-                  }
+                  onPress={this.handleCorrectAnswers}
                 >
                   Correct
                 </StyledButton>
                 <StyledButton
                   disabled={false}
                   BtnStyle="btnSecondary"
-                  onPress={() =>
-                    this.props.navigation.navigate("QuizDetailsScreen", {
-                      title: deck.title
-                    })
-                  }
+                  onPress={this.handleInCorrectAnswers}
                 >
                   Incorrect
                 </StyledButton>
-                <Divider
-                  style={{ backgroundColor: "gray", height: 2, marginTop: 10 }}
-                />
-              </View>
-            )}
-          </View>
-        ))}
+                </View>
+            
       </ScrollView>
     );
   }
@@ -83,12 +76,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    margin: 20
   },
-  contentContainer: {
-    justifyContent: "space-around",
-    paddingTop: 30
-  },
+  
   cardContainer: {
     flexDirection: "column",
     justifyContent: "space-around",
