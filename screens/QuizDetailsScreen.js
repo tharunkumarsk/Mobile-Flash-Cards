@@ -15,7 +15,7 @@ class QuizDetailsScreen extends Component {
   };
   render() {
     const { questions } = this.props.deck;
-
+    const totalQuestions = questions.length;
     return (
       <ScrollView>
         {questions.map((question, idx) => (
@@ -23,6 +23,8 @@ class QuizDetailsScreen extends Component {
             <FlipCard
               question={question.question}
               answer={question.answer}
+              totalQuestions={totalQuestions}
+              questionNbr={idx + 1}
             ></FlipCard>
           </View>
         ))}

@@ -8,8 +8,9 @@ import {
 } from "react-native";
 import Colors from "../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
+import PropTypes from "prop-types";
 
-export default class animatedbasic extends Component {
+export default class FlipCard extends Component {
   UNSAFE_componentWillMount() {
     this.animatedValue = new Animated.Value(0);
     this.value = 0;
@@ -42,7 +43,7 @@ export default class animatedbasic extends Component {
   }
 
   render() {
-    const { question, answer } = this.props;
+    const { question, answer, totalQuestions, questionNbr } = this.props;
     const frontAnimatedStyle = {
       transform: [{ rotateY: this.frontInterpolate }]
     };
@@ -51,6 +52,9 @@ export default class animatedbasic extends Component {
     };
     return (
       <View style={styles.container}>
+        <Text
+          style={styles.countText}
+        >{`${questionNbr} / ${totalQuestions}`}</Text>
         <TouchableOpacity onPress={() => this.flipCard()}>
           <Animated.View style={[frontAnimatedStyle, styles.cardBtn]}>
             <Text style={styles.flipText}>{question}</Text>
@@ -83,7 +87,8 @@ const styles = StyleSheet.create({
     backfaceVisibility: "hidden",
     backgroundColor: Colors.green,
     borderRadius: 10,
-    padding: 5
+    padding: 5,
+    overflow: "hidden"
   },
 
   flipCardBack: {
@@ -96,5 +101,16 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: Colors.white,
     textAlign: "center"
+  },
+  countText: {
+    fontSize: 15,
+    padding: 5
   }
 });
+
+FlipCard.propTypes = {
+  question: PropTypes.string.isRequired,
+  answer: PropTypes.string.isRequired,
+  totalQuestions: PropTypes.string.isRequired,
+  questionNbr: PropTypes.string.isRequired
+};
