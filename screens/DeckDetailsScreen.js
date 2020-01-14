@@ -34,7 +34,7 @@ class DeckDetailsScreen extends Component {
         <View style={{ paddingBottom: 100 }}>
           <StyledButton
             disabled={false}
-            BtnStyle="btnPrimary"
+            BtnStyle="btnTeritary"
             onPress={() =>
               navigation.navigate("AddCardScreen", { title: deck.title })
             }
@@ -42,13 +42,15 @@ class DeckDetailsScreen extends Component {
             Add Cards
           </StyledButton>
 
-          <StyledButton
-            disabled={false}
-            BtnStyle="btnSecondary"
-            onPress={this.deleteDeck}
-          >
-            Start Quiz
-          </StyledButton>
+          {deck.questions.length > 0 && (
+            <StyledButton
+              disabled={false}
+              BtnStyle="btnPrimary"
+              onPress={this.deleteDeck}
+            >
+              Start Quiz
+            </StyledButton>
+          )}
           <StyledButton
             disabled={false}
             BtnStyle="btnSecondary"
