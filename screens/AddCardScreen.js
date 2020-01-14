@@ -4,6 +4,7 @@ import StyledButton from "../components/StyledButton";
 import { StyledInputView } from "../components/StyledInputView";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { addQuestionsToDeck } from "../actions/index";
 
 class AddCardScreen extends Component {
   static propTypes = {
@@ -25,7 +26,15 @@ class AddCardScreen extends Component {
   };
 
   handleSubmit = () => {
-    //Api call goes here
+    const { addQuestionsToDeck, title, navigation } = this.props;
+    const card = {
+      question: this.state.question,
+      answer: this.state.answer
+    };
+    addQuestionsToDeck(title, card);
+
+    this.setState({ question: "", answer: "" });
+    navigation.goBack();
   };
   render() {
     const { title } = this.props;
@@ -87,4 +96,4 @@ const mapStateToProps = (state, { navigation }) => {
   };
 };
 
-export default connect(mapStateToProps)(AddCardScreen);
+export default connect(mapStateToProps, { addQuestionsToDeck })(AddCardScreen);

@@ -58,19 +58,41 @@ describe("the app redecer", () => {
       })
     ).toEqual(StubData);
   });
+  it("ADD_CARD", () => {
+    const card = {
+      question: "new question",
+      answer: "new answer"
+    };
+    expect(
+      appReducer(receivedDecks, {
+        type: "ADD_CARD",
+        deckId: "React",
+        card: card
+      })
+    ).toEqual({
+      React: {
+        questions: [
+          { answer: "some y", question: "some X" },
+          { answer: "new answer", question: "new question" }
+        ],
+        title: "React"
+      }
+    });
+  });
   it("DELETE_DECK", () => {
     expect(
       appReducer(StubData, {
         type: "DELETE_DECK",
-        id:"React"
+        id: "React"
       })
     ).toEqual({
       JavaScript: {
-        title: 'JavaScript',
+        title: "JavaScript",
         questions: [
           {
-            question: 'What is a closure?',
-            answer:'The combination of a function and the lexical environment within which that function was declared.'
+            question: "What is a closure?",
+            answer:
+              "The combination of a function and the lexical environment within which that function was declared."
           }
         ]
       }

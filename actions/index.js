@@ -1,9 +1,15 @@
-import { getAllDecks, resetDecks, deleteDeck } from "../utils/api";
+import {
+  getAllDecks,
+  resetDecks,
+  deleteDeck,
+  addCardToDeck
+} from "../utils/api";
 
 export const RECEIVED_DECKS = "RECEIVED_DECKS";
 export const ADD_DECK = "ADD_DECK";
 export const RESET_DECKS = "RESET_DECKS";
 export const DELETE_DECK = "DELETE_DECK";
+export const ADD_CARD = "ADD_CARD";
 
 export function receivedDecks(decks) {
   return {
@@ -51,5 +57,20 @@ export function deleteDeckfromStore(id) {
   return {
     type: DELETE_DECK,
     id
+  };
+}
+
+export function addCardToDeckStore(deckId, card) {
+  return {
+    type: ADD_CARD,
+    deckId,
+    card
+  };
+}
+export function addQuestionsToDeck(deckId, card) {
+  return dispatch => {
+    return addCardToDeck(deckId, card).then(() => {
+      dispatch(addCardToDeckStore(deckId, card));
+    });
   };
 }
