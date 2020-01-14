@@ -8,31 +8,47 @@ import { Divider } from "react-native-elements";
 
 class QuizDetailsScreen extends Component {
   state = {
-    currentQuestion:0
+    currentQuestion:0,
+    nbrOfCorrectAnswers:0,
+    isQuizOver:false
   };
 
   static propTypes = {
     deck: PropTypes.object
   };
 
-  handleCorrectAnswers = () => {
-    this.setState(prevState => ({ 
-      currentQuestion: prevState.currentQuestion + 1,
-     }));
-  };
-  handleInCorrectAnswers = () => {
-    this.setState(prevState => ({ 
-      currentQuestion: prevState.currentQuestion + 1,
-     }));
+  handleAnswersWith = (correctAns) => {
+    let { isQuizOver, nbrOfCorrectAnswers, currentQuestion } = this.state
+    const { questions } = this.props.deck
 
+    if(correctAns){
+      nbrOfCorrectAnswers ++
+    }
+
+    if(questions.length === currentQuestion + 1){
+      isQuizOver = true
+    }
+    else {
+      currentQuestion ++
+    }
+    this.setState({
+      isQuizOver,
+      nbrOfCorrectAnswers,
+      currentQuestion
+    })
+      
   };
-  handleFlip = showing => {
-  };
+
+  
   render() {
     const { questions } = this.props.deck;
-    const{currentQuestion} = this.state
+    const{currentQuestion,isQuizOver,nbrOfCorrectAnswers} = this.state
     const question = questions[currentQuestion]
     const totalQuestions = questions.length;
+    if(isQuizOver){
+      console.log(nbrOfCorrectAnswers)
+      return null
+    }
     return (
       <ScrollView>
           <View style={styles.cardContainer}>
@@ -49,14 +65,14 @@ class QuizDetailsScreen extends Component {
                 <StyledButton
                   disabled={false}
                   BtnStyle="btnPrimary"
-                  onPress={this.handleCorrectAnswers}
+                  onPress={() => this.handleAnswersWith(true)}
                 >
                   Correct
                 </StyledButton>
                 <StyledButton
                   disabled={false}
                   BtnStyle="btnSecondary"
-                  onPress={this.handleInCorrectAnswers}
+                  onPress={() => this.handleAnswersWith(false)}
                 >
                   Incorrect
                 </StyledButton>
