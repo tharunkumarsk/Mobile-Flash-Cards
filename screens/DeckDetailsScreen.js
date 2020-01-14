@@ -18,9 +18,14 @@ class DeckDetailsScreen extends Component {
 
   deleteDeck = id => {
     this.props.deleteDeckWith(id);
+    this.props.navigation.navigate("HomeStack");
+
   };
   render() {
     const { deck } = this.props;
+    if(!deck){
+return null
+    }
     return (
       <View style={styles.container}>
         <TouchableOpacity style={styles.cardBtn} key={deck.title}>

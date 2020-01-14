@@ -26,10 +26,8 @@ export default function decks(state = StubData, action) {
       return StubData;
     case DELETE_DECK:
       const { id } = action;
-      // return ({ [id]: value, ...remainingDecks } = state);
-      const { [id]: value, ...remainingDecks } = state;
-      // console.log(remainingDecks);
-      return remainingDecks;
+     delete state[id]
+      return {...state};
     default:
       return state;
   }
