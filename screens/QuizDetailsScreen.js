@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import FlipCard from "../components/FlipCard";
 import StyledButton from "../components/StyledButton";
-import { Divider } from "react-native-elements";
 
 class QuizDetailsScreen extends Component {
   state = {
@@ -16,7 +15,9 @@ class QuizDetailsScreen extends Component {
   static propTypes = {
     deck: PropTypes.object
   };
-
+  renderResultScreen =() =>{
+  this.props.navigation.navigate("QuizResultScreen");
+  }
   handleAnswersWith = (correctAns) => {
     let { isQuizOver, nbrOfCorrectAnswers, currentQuestion } = this.state
     const { questions } = this.props.deck
@@ -27,6 +28,7 @@ class QuizDetailsScreen extends Component {
 
     if(questions.length === currentQuestion + 1){
       isQuizOver = true
+      this.props.navigation.navigate("QuizResultScreen");
     }
     else {
       currentQuestion ++
@@ -45,10 +47,7 @@ class QuizDetailsScreen extends Component {
     const{currentQuestion,isQuizOver,nbrOfCorrectAnswers} = this.state
     const question = questions[currentQuestion]
     const totalQuestions = questions.length;
-    if(isQuizOver){
-      console.log(nbrOfCorrectAnswers)
-      return null
-    }
+  if(!isQuizOver){
     return (
       <ScrollView>
           <View style={styles.cardContainer}>
@@ -80,6 +79,9 @@ class QuizDetailsScreen extends Component {
             
       </ScrollView>
     );
+    }else{
+      return null
+    }
   }
 }
 

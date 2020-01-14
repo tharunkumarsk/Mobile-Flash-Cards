@@ -12,6 +12,7 @@ import SettingsScreen from "../screens/SettingsScreen";
 import DeckDetailsScreen from "../screens/DeckDetailsScreen";
 import AddCardScreen from "../screens/AddCardScreen";
 import QuizDetailsScreen from "../screens/QuizDetailsScreen";
+import QuizResultScreen from "../screens/QuizResultScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -104,6 +105,9 @@ const MainNavigator = createStackNavigator({
   },
   QuizDetailsScreen: {
     screen: QuizDetailsScreen
+  },
+  QuizResultScreen: {
+    screen: QuizResultScreen
   }
 });
 
