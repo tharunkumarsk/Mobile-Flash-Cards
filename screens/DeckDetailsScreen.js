@@ -46,7 +46,11 @@ class DeckDetailsScreen extends Component {
             <StyledButton
               disabled={false}
               BtnStyle="btnPrimary"
-              onPress={this.deleteDeck}
+              onPress={() =>
+                this.props.navigation.navigate("QuizDetailsScreen", {
+                  title: deck.title
+                })
+              }
             >
               Start Quiz
             </StyledButton>
