@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import FlipCard from "../components/FlipCard";
 
 class QuizDetailsScreen extends Component {
   static propTypes = {
@@ -13,14 +14,19 @@ class QuizDetailsScreen extends Component {
     this.props.navigation.goBack();
   };
   render() {
-    const { deck } = this.props;
-    if (!deck) {
-      return null;
-    }
+    const { questions } = this.props.deck;
+
     return (
-      <View style={styles.container}>
-        <Text>{JSON.stringify(deck)}</Text>
-      </View>
+      <ScrollView>
+        {questions.map((question, idx) => (
+          <View style={styles.cardContainer}>
+            <FlipCard
+              question={question.question}
+              answer={question.answer}
+            ></FlipCard>
+          </View>
+        ))}
+      </ScrollView>
     );
   }
 }
@@ -33,12 +39,16 @@ QuizDetailsScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-around",
-    padding: 15
+    backgroundColor: "#fff",
+    margin: 20
   },
-  cardBtn: {
+  contentContainer: {
+    justifyContent: "space-around",
+    paddingTop: 30
+  },
+  cardContainer: {
     flexDirection: "column",
-    justifyContent: "flex-end",
+    justifyContent: "space-around",
     flex: 1,
     margin: 10
   }
