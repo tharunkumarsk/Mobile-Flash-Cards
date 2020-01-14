@@ -8,7 +8,7 @@ import { deleteDeckWith } from "../actions/index";
 
 class DeckDetailsScreen extends Component {
   static propTypes = {
-    deck: PropTypes.object.isRequired,
+    deck: PropTypes.object,
     deleteDeckWith: PropTypes.func.isRequired
   };
 
@@ -18,7 +18,7 @@ class DeckDetailsScreen extends Component {
 
   deleteDeck = id => {
     this.props.deleteDeckWith(id);
-    this.props.navigation.navigate("HomeStack");
+    this.props.navigation.goBack();
 
   };
   render() {
