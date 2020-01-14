@@ -36,6 +36,7 @@ class AddDeckScreen extends Component {
             text={this.state.text}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            placeholder="Deck Name"
           />
         </View>
         <StyledButton
@@ -51,7 +52,8 @@ class AddDeckScreen extends Component {
 }
 if (Platform.OS === "ios") {
   AddDeckScreen.navigationOptions = {
-    title: "Add a deck"
+    title: "Add a deck",
+    headerTintColor: "green"
   };
 }
 
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    fontSize: 32
+    fontSize: 20
   }
 });
 
