@@ -1,10 +1,16 @@
 import React, { Component } from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Text } from "react-native";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import FlipCard from "../components/FlipCard";
+import StyledButton from "../components/StyledButton";
+import { Divider } from "react-native-elements";
 
 class QuizDetailsScreen extends Component {
+  state = {
+    showing: "question0"
+  };
+
   static propTypes = {
     deck: PropTypes.object
   };
@@ -12,6 +18,9 @@ class QuizDetailsScreen extends Component {
   deleteDeck = id => {
     this.props.deleteDeckWith(id);
     this.props.navigation.goBack();
+  };
+  handleFlip = showing => {
+    this.setState({ showing });
   };
   render() {
     const { questions } = this.props.deck;
@@ -25,7 +34,39 @@ class QuizDetailsScreen extends Component {
               answer={question.answer}
               totalQuestions={totalQuestions}
               questionNbr={idx + 1}
+              onPress={this.handleFlip}
             ></FlipCard>
+
+            <View style={{ paddingBottom: 10 }}></View>
+            {this.state.showing === `answer${idx}` && (
+              <View>
+                <StyledButton
+                  disabled={false}
+                  BtnStyle="btnPrimary"
+                  onPress={() =>
+                    this.props.navigation.navigate("QuizDetailsScreen", {
+                      title: deck.title
+                    })
+                  }
+                >
+                  Correct
+                </StyledButton>
+                <StyledButton
+                  disabled={false}
+                  BtnStyle="btnSecondary"
+                  onPress={() =>
+                    this.props.navigation.navigate("QuizDetailsScreen", {
+                      title: deck.title
+                    })
+                  }
+                >
+                  Incorrect
+                </StyledButton>
+                <Divider
+                  style={{ backgroundColor: "gray", height: 2, marginTop: 10 }}
+                />
+              </View>
+            )}
           </View>
         ))}
       </ScrollView>

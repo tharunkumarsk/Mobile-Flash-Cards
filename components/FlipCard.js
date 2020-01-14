@@ -26,19 +26,24 @@ export default class FlipCard extends Component {
       outputRange: ["180deg", "360deg"]
     });
   }
-  flipCard() {
+  flipCard(questionIdx) {
+    const { onPress } = this.props;
+    console.log(this);
+    this.value = 180;
     if (this.value >= 90) {
       Animated.spring(this.animatedValue, {
         toValue: 0,
         friction: 8,
         tension: 10
       }).start();
+      onPress(`question${questionIdx}`);
     } else {
       Animated.spring(this.animatedValue, {
         toValue: 180,
         friction: 8,
         tension: 10
       }).start();
+      onPress(`answer${questionIdx}`);
     }
   }
 
@@ -55,7 +60,7 @@ export default class FlipCard extends Component {
         <Text
           style={styles.countText}
         >{`${questionNbr} / ${totalQuestions}`}</Text>
-        <TouchableOpacity onPress={() => this.flipCard()}>
+        <TouchableOpacity onPress={() => this.flipCard(questionNbr - 1)}>
           <Animated.View style={[frontAnimatedStyle, styles.cardBtn]}>
             <Text style={styles.flipText}>{question}</Text>
             <Ionicons name="ios-unlock" size={30} />
@@ -112,5 +117,6 @@ FlipCard.propTypes = {
   question: PropTypes.string.isRequired,
   answer: PropTypes.string.isRequired,
   totalQuestions: PropTypes.string.isRequired,
-  questionNbr: PropTypes.string.isRequired
+  questionNbr: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired
 };
