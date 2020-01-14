@@ -16,7 +16,7 @@ describe("the app redecer", () => {
   };
 
   it("returns proper initial state", () => {
-    expect(appReducer(undefined, {})).toEqual(initialState);
+    expect(appReducer(undefined, {})).toEqual(StubData);
   });
 
   it("RECEIVED_DECKS", () => {
@@ -57,5 +57,23 @@ describe("the app redecer", () => {
         type: "RESET_DECKS"
       })
     ).toEqual(StubData);
+  });
+  it("DELETE_DECK", () => {
+    expect(
+      appReducer(StubData, {
+        type: "DELETE_DECK",
+        id:"React"
+      })
+    ).toEqual({
+      JavaScript: {
+        title: 'JavaScript',
+        questions: [
+          {
+            question: 'What is a closure?',
+            answer:'The combination of a function and the lexical environment within which that function was declared.'
+          }
+        ]
+      }
+    });
   });
 });
