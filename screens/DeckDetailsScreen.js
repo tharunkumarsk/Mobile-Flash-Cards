@@ -12,19 +12,14 @@ class DeckDetailsScreen extends Component {
     deleteDeckWith: PropTypes.func.isRequired
   };
 
-  addCards = () => {
-    //this.props.navigation.navigate("AddCard");
-  };
-
   deleteDeck = id => {
     this.props.deleteDeckWith(id);
     this.props.navigation.goBack();
-
   };
   render() {
-    const { deck } = this.props;
-    if(!deck){
-return null
+    const { deck, navigation } = this.props;
+    if (!deck) {
+      return null;
     }
     return (
       <View style={styles.container}>
@@ -40,7 +35,9 @@ return null
           <StyledButton
             disabled={false}
             BtnStyle="btnPrimary"
-            onPress={this.addCards}
+            onPress={() =>
+              navigation.navigate("AddCardScreen", { title: deck.title })
+            }
           >
             Add Cards
           </StyledButton>

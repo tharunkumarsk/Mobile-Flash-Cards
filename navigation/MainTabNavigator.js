@@ -10,6 +10,7 @@ import HomeScreen from "../screens/HomeScreen";
 import AddDeckScreen from "../screens/AddDeckScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import DeckDetailsScreen from "../screens/DeckDetailsScreen";
+import AddCardScreen from "../screens/AddCardScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -96,6 +97,9 @@ const MainNavigator = createStackNavigator({
   },
   DeckDetailsScreen: {
     screen: DeckDetailsScreen
+  },
+  AddCardScreen: {
+    screen: AddCardScreen
   }
 });
 
