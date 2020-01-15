@@ -34,10 +34,10 @@ export default function StyledButton({
 const styles = StyleSheet.create({
   iosSubmitBtn: {
     padding: 10,
+    textAlign:"center",
     borderRadius: 7,
-    height: 45,
-    marginLeft: 40,
-    marginRight: 40
+    height: 50,
+   
   },
   AndroidSubmitBtn: {
     padding: 10,
