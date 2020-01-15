@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { handleResetAppData } from "../actions/index";
 import StyledButton from "../components/StyledButton";
 import PropTypes from "prop-types";

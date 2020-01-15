@@ -27,11 +27,10 @@ class AddDeckScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ height: 60 }} />
-        <View style={styles.block}>
+        <View>
           <Text style={styles.title}>Enter the title of your new Deck</Text>
         </View>
-        <View style={[styles.block]}>
+        <View>
           <StyledInputView
             text={this.state.text}
             handleChange={this.handleChange}
@@ -39,13 +38,15 @@ class AddDeckScreen extends Component {
             placeholder="Deck Name"
           />
         </View>
-        <StyledButton
-          disabled={this.state.text === ""}
-          BtnStyle={this.state.text ? "btnPrimary" : "btnDisabled"}
-          onPress={this.handleSubmit}
-        >
-          Create Deck
-        </StyledButton>
+        <View style={{ padding: 10 }}>
+          <StyledButton
+            disabled={this.state.text === ""}
+            BtnStyle={this.state.text ? "btnPrimary" : "btnDisabled"}
+            onPress={this.handleSubmit}
+          >
+            Create Deck
+          </StyledButton>
+        </View>
       </View>
     );
   }
@@ -55,17 +56,19 @@ if (Platform.OS === "ios") {
     title: "Add a deck",
     headerTintColor: "green"
   };
+} else {
+  AddDeckScreen.navigationOptions = {
+    header: null
+  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    justifyContent: "space-around"
   },
-  block: {
-    marginBottom: 20
-  },
+
   title: {
     textAlign: "center",
     fontSize: 20
