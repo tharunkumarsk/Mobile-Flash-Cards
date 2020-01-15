@@ -79,7 +79,8 @@ class HomeScreen extends Component {
 }
 
 HomeScreen.navigationOptions = {
-  header: null
+  title: "Welcome",
+  headerTintColor: "green"
 };
 
 const styles = StyleSheet.create({

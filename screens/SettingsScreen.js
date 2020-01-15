@@ -43,7 +43,8 @@ class SettingsScreen extends Component {
 
 if (Platform.OS === "ios") {
   SettingsScreen.navigationOptions = {
-    title: "Settings"
+    title: "Settings",
+    headerTintColor: "green"
   };
 }
 
