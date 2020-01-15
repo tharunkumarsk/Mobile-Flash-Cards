@@ -50,6 +50,9 @@ export default class FlipCard extends Component {
     const backAnimatedStyle = {
       transform: [{ rotateY: this.backInterpolate }]
     };
+    this.value = 180;
+    this.flipCardSide();
+
     return (
       <View style={styles.container}>
         <Text
