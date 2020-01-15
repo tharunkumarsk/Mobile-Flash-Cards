@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import FlipCard from "../components/FlipCard";
 import StyledButton from "../components/StyledButton";
+import { setLocalNotification, clearLocalNotification } from '../utils/notification';
 
 class QuizDetailsScreen extends Component {
   state = {
@@ -15,6 +16,10 @@ class QuizDetailsScreen extends Component {
   static propTypes = {
     deck: PropTypes.object
   };
+
+  componentDidMount(){
+    clearLocalNotification().then(setLocalNotification);
+  }
   handleAnswersWith = correctAns => {
     let { isQuizOver, nbrOfCorrectAnswers, currentQuestion } = this.state;
     const { questions } = this.props.deck;

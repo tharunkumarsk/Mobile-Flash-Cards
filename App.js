@@ -1,7 +1,7 @@
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import AppNavigator from "./navigation/AppNavigator";
@@ -10,6 +10,8 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import reducer from './reducers/index';
+import { setLocalNotification } from './utils/notification';
+
 
 const store = createStore(
   reducer ,
@@ -18,6 +20,11 @@ const store = createStore(
 
 
 export default function App(props) {
+
+  useEffect(() => {
+    setLocalNotification();
+  }, [])
+
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
   if (!isLoadingComplete) {
