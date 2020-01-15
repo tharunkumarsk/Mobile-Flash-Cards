@@ -29,13 +29,22 @@ class SettingsScreen extends Component {
         >
           This will clear all your app data !!!
         </StyledInformationView>
-        <StyledButton
-          disabled={false}
-          BtnStyle="btnSecondary"
-          onPress={this.handleSubmit}
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            padding: 10,
+            marginBottom: 100
+          }}
         >
-          Reset Decks
-        </StyledButton>
+          <StyledButton
+            disabled={false}
+            BtnStyle="btnSecondary"
+            onPress={this.handleSubmit}
+          >
+            Reset Decks
+          </StyledButton>
+        </View>
       </View>
     );
   }
@@ -45,6 +54,10 @@ if (Platform.OS === "ios") {
   SettingsScreen.navigationOptions = {
     title: "Settings",
     headerTintColor: "green"
+  };
+} else {
+  SettingsScreen.navigationOptions = {
+    header: null
   };
 }
 

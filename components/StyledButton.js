@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     marginRight: 40
   },
   AndroidSubmitBtn: {
-    backgroundColor: Colors.purple,
     padding: 10,
     paddingLeft: 30,
     paddingRight: 30,

@@ -19,7 +19,14 @@ class QuizResultScreen extends Component {
           {`your score is  ${score} % !!!`}
         </StyledInformationView>
         <View style={{ height: 80 }} />
-        <View style={{ paddingBottom: 100 }}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            padding: 10,
+            marginBottom: 100
+          }}
+        >
           <StyledButton
             disabled={false}
             BtnStyle="btnPrimary"
@@ -42,12 +49,10 @@ class QuizResultScreen extends Component {
   }
 }
 
-if (Platform.OS === "ios") {
-  QuizResultScreen.navigationOptions = {
-    title: "Result",
-    headerLeft: null
-  };
-}
+QuizResultScreen.navigationOptions = {
+  title: "Result",
+  headerLeft: null
+};
 
 const styles = StyleSheet.create({
   container: {

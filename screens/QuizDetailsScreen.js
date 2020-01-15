@@ -82,7 +82,7 @@ class QuizDetailsScreen extends Component {
               questionNbr={currentQuestion + 1}
             ></FlipCard>
           </View>
-          <View style={{ flex: 1, justifyContent: "flex-end" }}>
+          <View style={{ flex: 1, justifyContent: "flex-end", padding: 10 }}>
             <StyledButton
               disabled={false}
               BtnStyle="btnPrimary"

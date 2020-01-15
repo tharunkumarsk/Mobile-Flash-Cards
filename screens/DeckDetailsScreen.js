@@ -76,8 +76,8 @@ DeckDetailsScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-around",
-    padding: 15
+    padding: 30,
+    backgroundColor: "#fff"
   },
   cardBtn: {
     flexDirection: "column",

@@ -77,11 +77,16 @@ class HomeScreen extends Component {
     );
   }
 }
-
-HomeScreen.navigationOptions = {
-  title: "Welcome",
-  headerTintColor: "green"
-};
+if (Platform.OS === "ios") {
+  HomeScreen.navigationOptions = {
+    title: "Welcome",
+    headerTintColor: "green"
+  };
+} else {
+  HomeScreen.navigationOptions = {
+    header: null
+  };
+}
 
 const styles = StyleSheet.create({
   container: {

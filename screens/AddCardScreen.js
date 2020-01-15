@@ -41,10 +41,10 @@ class AddCardScreen extends Component {
     const { question, answer } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.block}>
+        <View>
           <Text style={styles.title}>{`You are adding card to ${title}`}</Text>
         </View>
-        <View style={[styles.block]}>
+        <View>
           <StyledInputView
             text={question}
             handleChange={this.handleQuestionChange}
@@ -58,13 +58,15 @@ class AddCardScreen extends Component {
             placeholder="Enter your answer"
           />
         </View>
-        <StyledButton
-          disabled={question === "" || answer === ""}
-          BtnStyle={question && answer ? "btnPrimary" : "btnDisabled"}
-          onPress={this.handleSubmit}
-        >
-          Add card
-        </StyledButton>
+        <View style={{ padding: 10 }}>
+          <StyledButton
+            disabled={question === "" || answer === ""}
+            BtnStyle={question && answer ? "btnPrimary" : "btnDisabled"}
+            onPress={this.handleSubmit}
+          >
+            Add card
+          </StyledButton>
+        </View>
       </View>
     );
   }
@@ -77,8 +79,8 @@ AddCardScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    justifyContent: "space-around"
   },
   block: {
     marginBottom: 20
