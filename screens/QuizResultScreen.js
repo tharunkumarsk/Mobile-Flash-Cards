@@ -3,42 +3,40 @@ import { View, StyleSheet } from "react-native";
 import StyledButton from "../components/StyledButton";
 import { StyledInformationView } from "../components/StyledInformationView";
 import Colors from "../constants/Colors";
+import { connect } from "react-redux";
 
 class QuizResultScreen extends Component {
   render() {
-    const {navigation} = this.props
+    const { navigation, score, deckId } = this.props;
     return (
       <View style={styles.container}>
         <StyledInformationView
-          iconIos="ios-trash"
-          iconAndroid="md-trash"
-          iconColor={Colors.green}
-          textColor={Colors.green}
+          iconIos="ios-trophy"
+          iconAndroid="md-trophy"
+          iconColor={score > 50 ? Colors.green : Colors.red}
+          textColor={score > 50 ? Colors.green : Colors.red}
         >
-          your scrore is 100% !!!
+          {`your score is  ${score} % !!!`}
         </StyledInformationView>
         <View style={{ height: 80 }} />
         <View style={{ paddingBottom: 100 }}>
-                <StyledButton
-                  disabled={false}
-                  BtnStyle="btnPrimary"
-                  onPress={() =>
-                    navigation.navigate("HomeStack")
-                  }
-                 
-                >
-                  Try a new one
-                </StyledButton>
-                <StyledButton
-                  disabled={false}
-                  BtnStyle="btnSecondary"
-                  onPress={() =>
-                    navigation.navigate("DeckDetailsScreen", { title: "React" })
-                  }
-                >
-                  Retake the Quiz
-                </StyledButton>
-                </View>
+          <StyledButton
+            disabled={false}
+            BtnStyle="btnPrimary"
+            onPress={() => navigation.navigate("HomeStack")}
+          >
+            Try a new one
+          </StyledButton>
+          <StyledButton
+            disabled={false}
+            BtnStyle="btnSecondary"
+            onPress={() =>
+              navigation.navigate("QuizDetailsScreen", { title: deckId })
+            }
+          >
+            Retake the Quiz
+          </StyledButton>
+        </View>
       </View>
     );
   }
@@ -65,4 +63,15 @@ const styles = StyleSheet.create({
     color: "red"
   }
 });
-export default QuizResultScreen;
+
+const mapStateToProps = (state, { navigation }) => {
+  const score = navigation.getParam("score");
+  const deckId = navigation.getParam("deckId");
+
+  return {
+    score,
+    deckId
+  };
+};
+
+export default connect(mapStateToProps)(QuizResultScreen);

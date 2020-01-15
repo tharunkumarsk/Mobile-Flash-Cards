@@ -27,7 +27,6 @@ export default class FlipCard extends Component {
     });
   }
   flipCardSide() {
-    console.log("this.value",this.value)
     if (this.value >= 90) {
       Animated.spring(this.animatedValue, {
         toValue: 0,
@@ -106,8 +105,7 @@ const styles = StyleSheet.create({
   countText: {
     fontSize: 25,
     padding: 10,
-    color:Colors.purple
-
+    color: Colors.purple
   }
 });
 
@@ -115,5 +113,5 @@ FlipCard.propTypes = {
   question: PropTypes.string.isRequired,
   answer: PropTypes.string.isRequired,
   totalQuestions: PropTypes.any.isRequired,
-  questionNbr: PropTypes.any.isRequired,
+  questionNbr: PropTypes.any.isRequired
 };
