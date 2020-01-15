@@ -13,9 +13,10 @@ class SettingsScreen extends Component {
   };
 
   handleSubmit = () => {
-    const { handleResetAppData } = this.props;
+    const { handleResetAppData,navigation } = this.props;
 
     handleResetAppData();
+    navigation.navigate("HomeStack")
   };
 
   render() {
