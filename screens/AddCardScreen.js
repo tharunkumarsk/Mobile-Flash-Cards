@@ -53,12 +53,14 @@ class AddCardScreen extends Component {
             handleChange={this.handleQuestionChange}
             handleSubmit={this.handleSubmit}
             placeholder="Enter your question"
+            focus={true}
           />
           <StyledInputView
             text={answer}
             handleChange={this.handleAnswerChange}
             handleSubmit={this.handleSubmit}
             placeholder="Enter your answer"
+            focus={false}
           />
         </View>
         <View style={{ padding: 10 }}>

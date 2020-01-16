@@ -57,6 +57,7 @@ class AddDeckScreen extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             placeholder="Deck Name"
+            focus={true}
           />
         </View>
         <View style={{ padding: 10 }}>

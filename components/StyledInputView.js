@@ -7,7 +7,8 @@ export function StyledInputView({
   text,
   handleChange,
   handleSubmit,
-  placeholder
+  placeholder,
+  focus
 }) {
   return (
     <TextInput
@@ -15,7 +16,7 @@ export function StyledInputView({
       value={text}
       onChangeText={handleChange}
       placeholder={placeholder}
-      autoFocus={true}
+      autoFocus={focus}
       returnKeyType="done"
       onSubmitEditing={handleSubmit}
     />
