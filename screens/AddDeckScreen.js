@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Platform, TextInput, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Platform,
+  KeyboardAvoidingView,
+  Text
+} from "react-native";
 import StyledButton from "../components/StyledButton";
 import { StyledInputView } from "../components/StyledInputView";
 import { addDeck } from "../actions/index";
@@ -20,13 +26,15 @@ class AddDeckScreen extends Component {
   handleSubmit = () => {
     const { addDeck } = this.props;
     const { text } = this.state;
-    if (text) addDeck(text).then;
-    this.setState(() => ({ text: "" }));
-    this.props.navigation.navigate("HomeStack");
+    if (text) {
+      addDeck(text).then;
+      this.setState(() => ({ text: "" }));
+      this.props.navigation.navigate("HomeStack");
+    }
   };
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <View>
           <Text style={styles.title}>Enter the title of your new Deck</Text>
         </View>
@@ -47,7 +55,8 @@ class AddDeckScreen extends Component {
             Create Deck
           </StyledButton>
         </View>
-      </View>
+        <View style={{ height: 50 }} />
+      </KeyboardAvoidingView>
     );
   }
 }

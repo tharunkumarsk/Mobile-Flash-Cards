@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, KeyboardAvoidingView } from "react-native";
 import StyledButton from "../components/StyledButton";
 import { StyledInputView } from "../components/StyledInputView";
 import { connect } from "react-redux";
@@ -27,20 +27,23 @@ class AddCardScreen extends Component {
 
   handleSubmit = () => {
     const { addQuestionsToDeck, title, navigation } = this.props;
-    const card = {
-      question: this.state.question,
-      answer: this.state.answer
-    };
-    addQuestionsToDeck(title, card);
+    const { question, answer } = this.state;
+    if (question && answer) {
+      const card = {
+        question,
+        answer
+      };
+      addQuestionsToDeck(title, card);
 
-    this.setState({ question: "", answer: "" });
-    navigation.goBack();
+      this.setState({ question: "", answer: "" });
+      navigation.goBack();
+    }
   };
   render() {
     const { title } = this.props;
     const { question, answer } = this.state;
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <View>
           <Text style={styles.title}>{`You are adding card to ${title}`}</Text>
         </View>
@@ -67,7 +70,8 @@ class AddCardScreen extends Component {
             Add card
           </StyledButton>
         </View>
-      </View>
+        <View style={{ height: 50 }} />
+      </KeyboardAvoidingView>
     );
   }
 }
