@@ -67,14 +67,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  block: {
-    marginBottom: 20
-  },
-  title: {
-    textAlign: "center",
-    fontSize: 25,
-    color: "red"
   }
 });
 export default connect(null, { handleResetAppData })(SettingsScreen);

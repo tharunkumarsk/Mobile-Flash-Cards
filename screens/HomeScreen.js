@@ -106,12 +106,6 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 10
   },
-
-  tabBarInfoText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center"
-  },
   containerNoDecks: {
     flex: 1,
     backgroundColor: "#fff",

@@ -90,9 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "space-around"
   },
-  block: {
-    marginBottom: 20
-  },
+
   title: {
     textAlign: "center",
     fontSize: 20
