@@ -13,6 +13,8 @@ import DeckDetailsScreen from "../screens/DeckDetailsScreen";
 import AddCardScreen from "../screens/AddCardScreen";
 import QuizDetailsScreen from "../screens/QuizDetailsScreen";
 import QuizResultScreen from "../screens/QuizResultScreen";
+import Colors from "../constants/Colors";
+import { colors } from "react-native-elements";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -82,11 +84,29 @@ const _TabNavigator =
     ? createBottomTabNavigator
     : createMaterialTopTabNavigator;
 
-const tabNavigator = _TabNavigator({
-  HomeStack,
-  AddDeckStack,
-  SettingsStack
-});
+const tabNavigator = _TabNavigator(
+  {
+    HomeStack,
+    AddDeckStack,
+    SettingsStack
+  },
+  {
+    tabBarOptions:
+      Platform.OS !== "ios"
+        ? {
+            activeTintColor: Colors.red,
+            inactiveTintColor: Colors.white,
+            showIcon: true,
+            style: {
+              backgroundColor: Colors.green
+            },
+            indicatorStyle: {
+              backgroundColor: Colors.red
+            }
+          }
+        : null
+  }
+);
 
 tabNavigator.path = "";
 tabNavigator.navigationOptions = {
