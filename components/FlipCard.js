@@ -115,6 +115,6 @@ const styles = StyleSheet.create({
 FlipCard.propTypes = {
   question: PropTypes.string.isRequired,
   answer: PropTypes.string.isRequired,
-  totalQuestions: PropTypes.any.isRequired,
-  questionNbr: PropTypes.any.isRequired
+  totalQuestions: PropTypes.number.isRequired,
+  questionNbr: PropTypes.number.isRequired
 };

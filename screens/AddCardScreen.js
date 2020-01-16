@@ -8,7 +8,9 @@ import { addQuestionsToDeck } from "../actions/index";
 
 class AddCardScreen extends Component {
   static propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    addQuestionsToDeck: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired
   };
 
   state = {

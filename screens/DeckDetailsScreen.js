@@ -9,12 +9,14 @@ import { deleteDeckWith } from "../actions/index";
 class DeckDetailsScreen extends Component {
   static propTypes = {
     deck: PropTypes.object,
-    deleteDeckWith: PropTypes.func.isRequired
+    deleteDeckWith: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired
   };
 
   deleteDeck = id => {
-    this.props.deleteDeckWith(id);
-    this.props.navigation.goBack();
+    let { deleteDeckWith, navigation } = this.props;
+    deleteDeckWith(id);
+    navigation.goBack();
   };
   render() {
     const { deck, navigation } = this.props;
@@ -47,7 +49,7 @@ class DeckDetailsScreen extends Component {
               disabled={false}
               BtnStyle="btnPrimary"
               onPress={() =>
-                this.props.navigation.navigate("QuizDetailsScreen", {
+                navigation.navigate("QuizDetailsScreen", {
                   title: deck.title
                 })
               }

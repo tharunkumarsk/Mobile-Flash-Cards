@@ -15,7 +15,8 @@ import { StackActions, NavigationActions } from "react-navigation";
 
 class AddDeckScreen extends Component {
   static propTypes = {
-    addDeck: PropTypes.func.isRequired
+    addDeck: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired
   };
   state = {
     text: "",
@@ -25,7 +26,7 @@ class AddDeckScreen extends Component {
     this.setState({ text });
   };
   handleSubmit = () => {
-    const { addDeck } = this.props;
+    const { addDeck, navigation } = this.props;
     const { text } = this.state;
     if (text) {
       addDeck(text).then;
@@ -41,7 +42,7 @@ class AddDeckScreen extends Component {
         ]
       });
 
-      this.props.navigation.dispatch(resetAction);
+      navigation.dispatch(resetAction);
       this.setState(() => ({ text: "" }));
     }
   };

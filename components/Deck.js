@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Colors from "../constants/Colors";
+import PropTypes from "prop-types";
 
 export default class Deck extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    cardsCount: PropTypes.number.isRequired,
+    cardId: PropTypes.number.isRequired
+  };
   render() {
     const { title, cardsCount, cardId } = this.props;
     const cardStyle = cardId % 2 == 0 ? styles.redTile : styles.greenTile;

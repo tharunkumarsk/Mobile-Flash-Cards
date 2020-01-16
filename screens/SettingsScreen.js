@@ -9,14 +9,15 @@ import Colors from "../constants/Colors";
 
 class SettingsScreen extends Component {
   static propTypes = {
-    handleResetAppData: PropTypes.func.isRequired
+    handleResetAppData: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired
   };
 
   handleSubmit = () => {
-    const { handleResetAppData,navigation } = this.props;
+    const { handleResetAppData, navigation } = this.props;
 
     handleResetAppData();
-    navigation.navigate("HomeStack")
+    navigation.navigate("HomeStack");
   };
 
   render() {

@@ -4,7 +4,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import FlipCard from "../components/FlipCard";
 import StyledButton from "../components/StyledButton";
-import { setLocalNotification, clearLocalNotification } from '../utils/notification';
+import {
+  setLocalNotification,
+  clearLocalNotification
+} from "../utils/notification";
 
 class QuizDetailsScreen extends Component {
   state = {
@@ -14,10 +17,11 @@ class QuizDetailsScreen extends Component {
   };
 
   static propTypes = {
-    deck: PropTypes.object
+    deck: PropTypes.object,
+    navigation: PropTypes.object.isRequired
   };
 
-  componentDidMount(){
+  componentDidMount() {
     clearLocalNotification().then(setLocalNotification);
   }
   handleAnswersWith = correctAns => {
@@ -50,9 +54,10 @@ class QuizDetailsScreen extends Component {
   };
 
   moveToResultScreen = () => {
-    this.props.navigation.navigate("QuizResultScreen", {
+    let { navigation, deck } = this.props;
+    navigation.navigate("QuizResultScreen", {
       score: this.calculateScore(),
-      deckId: this.props.deck.title
+      deckId: deck.title
     });
     this.resetTheState();
   };

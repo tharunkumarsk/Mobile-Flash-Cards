@@ -17,7 +17,8 @@ import Colors from "../constants/Colors";
 class HomeScreen extends Component {
   static propTypes = {
     handlAppLoadData: PropTypes.func.isRequired,
-    decks: PropTypes.object.isRequired
+    decks: PropTypes.object.isRequired,
+    navigation: PropTypes.object.isRequired
   };
   componentDidMount() {
     this.props.handlAppLoadData();

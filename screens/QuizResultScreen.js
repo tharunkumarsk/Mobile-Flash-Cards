@@ -4,8 +4,15 @@ import StyledButton from "../components/StyledButton";
 import { StyledInformationView } from "../components/StyledInformationView";
 import Colors from "../constants/Colors";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class QuizResultScreen extends Component {
+  static propTypes = {
+    score: PropTypes.string,
+    navigation: PropTypes.object.isRequired,
+    deckId: PropTypes.string.isRequired
+  };
+
   render() {
     const { navigation, score, deckId } = this.props;
     return (
