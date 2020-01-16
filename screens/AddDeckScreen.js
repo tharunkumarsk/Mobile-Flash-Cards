@@ -11,6 +11,7 @@ import { StyledInputView } from "../components/StyledInputView";
 import { addDeck } from "../actions/index";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { StackActions, NavigationActions } from "react-navigation";
 
 class AddDeckScreen extends Component {
   static propTypes = {
@@ -28,8 +29,20 @@ class AddDeckScreen extends Component {
     const { text } = this.state;
     if (text) {
       addDeck(text).then;
+
+      const resetAction = StackActions.reset({
+        index: 1,
+        actions: [
+          NavigationActions.navigate({ routeName: "Home" }),
+          NavigationActions.navigate({
+            routeName: "DeckDetailsScreen",
+            params: { title: text }
+          })
+        ]
+      });
+
+      this.props.navigation.dispatch(resetAction);
       this.setState(() => ({ text: "" }));
-      this.props.navigation.navigate("HomeStack");
     }
   };
   render() {
