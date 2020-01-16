@@ -2,7 +2,8 @@
 
 ## Project Overview
     A mobile application (Android & iOS) that allows users to study collections of flashcards. 
-    The app will allow users to create different categories of flashcards called "decks", add flashcards to those decks,           then take quizzes on those decks.
+    The app will allow users to create different categories of flashcards called "decks", 
+    add flashcards to those decks,then take quizzes on those decks.
 
 ### Given scenarios
 - Allow users to create a deck which can hold an unlimited number of cards.
@@ -27,7 +28,7 @@ There you can choose the devices and simulators to run
      Please Note:
      This application is build with a tool called Expo , so you will only need NodeJS and NPM (or Yarn) to start it. If you want to run the application on your Android device, download the Expo Client app from the Google Play Store and scan the QR code which is displayed in the command like window after running npm start.
 
-## Test Configuration
+## Test Configuration Done
    ### Simulators
     - Android - samsung Galaxy S10
     - iOS - iPhone X - 11.2
