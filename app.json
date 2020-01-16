@@ -24,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "org.tharun.exp"
+    },
+    "android": {
+      "package": "org.tharun.exp"
     }
   }
 }
