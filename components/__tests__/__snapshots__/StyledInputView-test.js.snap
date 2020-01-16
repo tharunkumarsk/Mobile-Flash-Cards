@@ -3,7 +3,6 @@
 exports[`renders correctly the input view 1`] = `
 <TextInput
   allowFontScaling={true}
-  autoFocus={true}
   onChangeText={[Function]}
   onSubmitEditing={[Function]}
   rejectResponderTermination={true}

@@ -3,125 +3,95 @@
 exports[`renders correctly for even numbers of cards 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#b71845",
-      "borderRadius": 10,
-      "flex": 1,
-      "justifyContent": "center",
-    }
+    Array [
+      Object {
+        "backgroundColor": "#b71845",
+      },
+      Object {
+        "alignItems": "center",
+        "borderRadius": 10,
+        "flex": 1,
+        "height": 200,
+        "justifyContent": "center",
+      },
+    ]
   }
 >
-  <View
+  <Text
     style={
-      Array [
-        Object {
-          "borderRadius": 5,
-          "shadowOffset": Object {
-            "height": 5,
-            "width": 0,
-          },
-          "shadowOpacity": 0.24,
-          "shadowRadius": 5,
-        },
-        Object {
-          "height": 180,
-          "width": 250,
-        },
-      ]
+      Object {
+        "color": "#000",
+        "fontSize": 40,
+        "marginTop": 20,
+        "textAlign": "center",
+      }
     }
   >
-    <Text
-      style={
-        Object {
-          "color": "#000",
-          "fontSize": 40,
-          "marginTop": 50,
-          "textAlign": "center",
-        }
+     
+    Test
+     
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#000",
+        "fontSize": 20,
+        "marginBottom": 5,
+        "textAlign": "center",
       }
-    >
-       
-      Test
-       
-    </Text>
-    <Text
-      style={
-        Object {
-          "color": "#000",
-          "fontSize": 20,
-          "marginBottom": 5,
-          "textAlign": "center",
-        }
-      }
-    >
-       
-      2
-       cards 
-    </Text>
-  </View>
+    }
+  >
+     
+    2
+     cards 
+  </Text>
 </View>
 `;
 
 exports[`renders correctly for odd numbers of cards 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#00965e",
-      "borderRadius": 10,
-      "flex": 1,
-      "justifyContent": "center",
-    }
+    Array [
+      Object {
+        "backgroundColor": "#00965e",
+      },
+      Object {
+        "alignItems": "center",
+        "borderRadius": 10,
+        "flex": 1,
+        "height": 200,
+        "justifyContent": "center",
+      },
+    ]
   }
 >
-  <View
+  <Text
     style={
-      Array [
-        Object {
-          "borderRadius": 5,
-          "shadowOffset": Object {
-            "height": 5,
-            "width": 0,
-          },
-          "shadowOpacity": 0.24,
-          "shadowRadius": 5,
-        },
-        Object {
-          "height": 180,
-          "width": 250,
-        },
-      ]
+      Object {
+        "color": "#000",
+        "fontSize": 40,
+        "marginTop": 20,
+        "textAlign": "center",
+      }
     }
   >
-    <Text
-      style={
-        Object {
-          "color": "#000",
-          "fontSize": 40,
-          "marginTop": 50,
-          "textAlign": "center",
-        }
+     
+    Test
+     
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#000",
+        "fontSize": 20,
+        "marginBottom": 5,
+        "textAlign": "center",
       }
-    >
-       
-      Test
-       
-    </Text>
-    <Text
-      style={
-        Object {
-          "color": "#000",
-          "fontSize": 20,
-          "marginBottom": 5,
-          "textAlign": "center",
-        }
-      }
-    >
-       
-      2
-       cards 
-    </Text>
-  </View>
+    }
+  >
+     
+    2
+     cards 
+  </Text>
 </View>
 `;

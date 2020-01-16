@@ -25,11 +25,10 @@ exports[`renders correctly the disabled button 1`] = `
         "borderColor": "#757575",
         "borderRadius": 7,
         "color": "#757575",
-        "height": 45,
-        "marginLeft": 40,
-        "marginRight": 40,
+        "height": 50,
         "opacity": 1,
         "padding": 10,
+        "textAlign": "center",
       }
     }
   >
@@ -71,11 +70,10 @@ exports[`renders correctly the primary button 1`] = `
       Object {
         "backgroundColor": "#00965e",
         "borderRadius": 7,
-        "height": 45,
-        "marginLeft": 40,
-        "marginRight": 40,
+        "height": 50,
         "opacity": 1,
         "padding": 10,
+        "textAlign": "center",
       }
     }
   >
@@ -117,11 +115,10 @@ exports[`renders correctly the secondary button 1`] = `
       Object {
         "backgroundColor": "#b71845",
         "borderRadius": 7,
-        "height": 45,
-        "marginLeft": 40,
-        "marginRight": 40,
+        "height": 50,
         "opacity": 1,
         "padding": 10,
+        "textAlign": "center",
       }
     }
   >
